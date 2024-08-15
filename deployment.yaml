@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-deployment
+  labels:
+    app: front-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: front-deployment
+  template:
+    metadata:
+      labels:
+        app: front-deployment
+    spec:
+      containers:
+      - name: front-deployment
+        image: registry.digitalocean.com/front-registry/front-end:0.0.1
+        ports:
+        - containerPort: 5173
+
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: download-deployment
+  labels:
+    app: download-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: download-deployment
+  template:
+    metadata:
+      labels:
+        app: download-deployment
+    spec:
+      containers:
+      - name: download-deployment
+        image: registry.digitalocean.com/front-registry/service-data:0.0.1
+        ports:
+        - containerPort: 3010

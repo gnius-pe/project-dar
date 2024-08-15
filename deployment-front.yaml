@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-deployment
+  labels:
+    app: front-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: front-deployment
+  template:
+    metadata:
+      labels:
+        app: front-deployment
+    spec:
+      containers:
+      - name: front-deployment
+        image: registry.digitalocean.com/front-registry/front-end@sha256:00c8be58257796a07ed7fa4ce85a4821e565f7663961ece3d183d5642f6754e2
+        ports:
+        - containerPort: 5173

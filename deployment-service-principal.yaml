@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-principal-deployment
+  labels:
+    app: service-principal-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-principal-deployment
+  template:
+    metadata:
+      labels:
+        app: service-principal-deployment
+    spec:
+      containers:
+      - name: service-principal-deployment
+        image: registry.digitalocean.com/front-registry/back-end@sha256:c19a265d19883559a7a92bd080474072cbc614c38852ba1bcfca94692ec8db29
+        ports:
+        - containerPort: 3000

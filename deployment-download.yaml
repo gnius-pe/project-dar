@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: download-deployment
+  labels:
+    app: download-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: download-deployment
+  template:
+    metadata:
+      labels:
+        app: download-deployment
+    spec:
+      containers:
+      - name: download-deployment
+        image: registry.digitalocean.com/front-registry/service-data@sha256:d598b08f0620601b19e5528a5fcdaed7bf3167a8efa1b576be16bb20366bafd3
+        ports:
+        - containerPort: 3010

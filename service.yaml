@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontservice
+spec:
+  selector:
+    app: front-deployment
+  ports:
+    - port: 5173
+      targetPort: 5173
+      nodePort: 30981
+  type: LoadBalancer
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: downloadservice
+spec:
+  selector:
+    app: download-deployment
+  ports:
+    - port: 3010
+      targetPort: 3010
+      nodePort: 30115
+  type: LoadBalancer
