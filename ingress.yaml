@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: front-ingress
+  name: multi-service-ingress
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt"
     nginx.ingress.kubernetes.io/rewrite-target: /
@@ -10,9 +10,11 @@ spec:
   tls:
   - hosts:
     - app.dar.reformaperu.org
+    - serviceprincipal.app.dar.reformaperu.org
+    - download.app.dar.reformaperu.org
     secretName: tls-secret
   rules:
-  - host: app.dar.reformaperu.org
+  - host: app.dar.reformaperu.org           # Frontend service
     http:
       paths:
       - path: /
@@ -20,5 +22,25 @@ spec:
         backend:
           service:
             name: frontservice
+            port:
+              number: 80
+  - host: serviceprincipal.app.dar.reformaperu.org  # Service principal
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: principalservice
+            port:
+              number: 80
+  - host: download.app.dar.reformaperu.org  # Download service
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: downloadservice
             port:
               number: 80

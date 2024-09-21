@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: service-principal-deployment
-        image: registry.digitalocean.com/front-registry/back-end@sha256:c19a265d19883559a7a92bd080474072cbc614c38852ba1bcfca94692ec8db29
+        image: registry.digitalocean.com/front-registry/back-end@registry.digitalocean.com/front-registry/back-end@sha256:73fc23a231ddb9d5b0460920352b25eac5602cdd9916de2e7a5460785138ad90
         ports:
         - containerPort: 3000

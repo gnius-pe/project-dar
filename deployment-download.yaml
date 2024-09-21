@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: download-deployment
-        image: registry.digitalocean.com/front-registry/service-data@sha256:d598b08f0620601b19e5528a5fcdaed7bf3167a8efa1b576be16bb20366bafd3
+        image: registry.digitalocean.com/front-registry/service-data@registry.digitalocean.com/front-registry/service-data@sha256:500bef0fde9a56518d38fdb92feed9a1646411b5d22003a7795b657f65992e89
         ports:
         - containerPort: 3010
